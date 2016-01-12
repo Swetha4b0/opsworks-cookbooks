@@ -30,7 +30,7 @@ node[:deploy].each do |application, deploy|
   if application == 'root'
     webapp_name = 'ROOT'
   else
-    webapp_name = application
+    webapp_name = ''
   end
 
   opsworks_deploy_dir do
