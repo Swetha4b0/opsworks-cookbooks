@@ -30,7 +30,7 @@ node[:deploy].each do |application, deploy|
   if application == 'root'
     webapp_name = 'ROOT'
   else
-    webapp_name = ''
+    webapp_name = application
   end
 
   opsworks_deploy_dir do
@@ -45,7 +45,7 @@ node[:deploy].each do |application, deploy|
   end
 
   current_dir = ::File.join(deploy[:deploy_to], 'current')
-  webapp_dir = ::File.join(node['opsworks_java'][node['opsworks_java']['java_app_server']]['webapps_base_dir'], nil)
+  webapp_dir = ::File.join(node['opsworks_java'][node['opsworks_java']['java_app_server']]['webapps_base_dir'], webapp_name)
 
   # opsworks_deploy creates some stub dirs, which are not needed for typical webapps
   ruby_block "remove unnecessary directory entries in #{current_dir}" do
