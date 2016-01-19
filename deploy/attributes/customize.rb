@@ -12,6 +12,8 @@
 #normal[:opsworks][:deploy_user][:user] = 'deploy'
 
 include_attribute 'deploy::deploy'
+include_attribute 'deploy::logrotate'
+include_attribute 'deploy::rails_stack'
 
 
 default[:opsworks][:deploy_user][:shell] = '/bin/bash'
